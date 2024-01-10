@@ -1,6 +1,6 @@
 # mockup_ui.py
 import streamlit as st
-from queries import find_devices
+
 from Geraet import Device
 from Nutzer import User
 

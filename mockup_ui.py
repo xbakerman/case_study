@@ -5,8 +5,8 @@ from Geraet import Device
 from Nutzer import User
 
 # Beispiel-Nutzer und -Gerät für das Mockup
-#beispiel_nutzer = User(id="nutzer@example.com", name="Max Mustermann", email="nutzer@example.com")
-#beispiel_geraet = Device(name="Laser-Cutter", verantwortlicher=beispiel_nutzer, wartungsdatum="2024-03-01", reservierungsbedarf="2024-04-01")
+beispiel_nutzer = User(id="nutzer@example.com", name="Max Mustermann", email="nutzer@example.com")
+beispiel_geraet = Device(name="Laser-Cutter", verantwortlicher=beispiel_nutzer, wartungsdatum="2024-03-01", reservierungsbedarf_start="2021-03-01", reservierungsbedarf_ende="2021-03-31")
 
 Geräte = ["3D-Drucker", "Laser-Cutter", "CNC-Fräse", "CNC-Drehbank", "Schweißgerät", "Lötkolben", "Oszilloskop", "Multimeter", "Bandsäge", "Ständerbohrmaschine"]
 
@@ -26,7 +26,7 @@ def geraet_verwaltung():
     st.title("Geräte-Verwaltung")
 
     geraet_name = st.selectbox("Gerät:", Geräte)
-    #geraet_wartungsdatum = st.date_input("Wartungsdatum:")
+    geraet_wartungsdatum = st.date_input("Wartungsdatum:")
     geraet_reservierungsbedarf_start = st.date_input("Reservierungsbedarf Startdatum:" )
     geraet_reservierungsbedarf_ende = st.date_input("Reservierungsbedarf Enddatum:" )
 
@@ -34,7 +34,7 @@ def geraet_verwaltung():
         if geraet_reservierungsbedarf_start > geraet_reservierungsbedarf_ende:
             st.error("Das Startdatum darf nicht nach dem Enddatum liegen.")
         else:
-            neues_geraet = Device(name=geraet_name, reservierungsbedarf_start=geraet_reservierungsbedarf_start, reservierungsbedarf_ende=geraet_reservierungsbedarf_ende)
+            neues_geraet = Device(name=geraet_name, reservierungsbedarf_start=geraet_reservierungsbedarf_start, reservierungsbedarf_ende=geraet_reservierungsbedarf_ende, verantwortlicher=beispiel_nutzer, wartungsdatum=geraet_wartungsdatum)
             st.success(f"Gerät '{neues_geraet.name}' wurde mit Reservierungsbedarf von '{neues_geraet.reservierungsbedarf_start}' bis '{neues_geraet.reservierungsbedarf_ende}' angelegt/geändert.")
 
 # Auswahl des Hauptablaufs basierend auf Benutzeraktion

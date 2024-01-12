@@ -37,8 +37,11 @@ def geraet_verwaltung():
             neues_geraet = Device(name=geraet_name, reservierungsbedarf_start=geraet_reservierungsbedarf_start, reservierungsbedarf_ende=geraet_reservierungsbedarf_ende, verantwortlicher=beispiel_nutzer, wartungsdatum=geraet_wartungsdatum)
             st.success(f"Gerät '{neues_geraet.name}' wurde mit Reservierungsbedarf von '{neues_geraet.reservierungsbedarf_start}' bis '{neues_geraet.reservierungsbedarf_ende}' angelegt/geändert.")
 
+def Reservierungssystem(): 
+    st.title("Reservierungssystem") 
+
 # Auswahl des Hauptablaufs basierend auf Benutzeraktion
-auswahl = st.sidebar.selectbox("Wählen Sie eine Option:", ["Nutzer-Verwaltung", "Geräte-Verwaltung"])
+auswahl = st.sidebar.selectbox("Wählen Sie eine Option:", ["Nutzer-Verwaltung", "Geräte-Verwaltung", "Reservierungssystem", "Wartungsmanagement" ])
 
 if auswahl == "Nutzer-Verwaltung":
     nutzer_verwaltung()
